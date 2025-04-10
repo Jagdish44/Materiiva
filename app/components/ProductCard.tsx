@@ -104,14 +104,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     return (
       <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
         <div className="bg-white w-full max-w-md mx-4">
-          <div className="bg-blue-600 text-white p-4">
+          <div className="bg-[#6B21FF] text-white p-4">
             <h3 className="text-xl">Complete your profile</h3>
             <p className="text-sm opacity-80">Profile Status: 0% Complete</p>
           </div>
           <form onSubmit={(e) => {
             e.preventDefault();
             handleOrderSubmit(formData);
-          }} className="p-4">
+          }} className="p-6">
             <div className="space-y-4">
               <div>
                 <label className="flex items-center text-sm text-gray-600">
@@ -159,14 +159,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             <div className="mt-6 flex space-x-3">
               <button
                 type="submit"
-                className="flex-1 bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700"
+                className="flex-1 bg-[#6B21FF] text-white py-2 rounded-md hover:bg-[#5518CC]"
               >
                 Submit
               </button>
               <button
                 type="button"
                 onClick={() => setShowOrderForm(false)}
-                className="flex-1 bg-gray-100 text-gray-800 py-2 rounded-md hover:bg-gray-200"
+                className="flex-1 bg-gray-50 text-gray-800 py-2 rounded-md hover:bg-gray-100"
               >
                 Close
               </button>

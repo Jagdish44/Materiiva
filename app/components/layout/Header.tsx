@@ -1,4 +1,3 @@
-'use client';
 
 import React from 'react';
 import Image from 'next/image';
@@ -8,28 +7,32 @@ interface HeaderProps {
   username?: string;
 }
 
-const Header: React.FC<HeaderProps> = ({ username = 'to' }) => {
+const Header: React.FC<HeaderProps> = ({ username }) => {
   return (
-    <div className="flex justify-between items-center p-4">
-      <div className="flex items-center gap-3">
-        <div className="relative h-12 w-12 rounded-full overflow-hidden">
-          <Image 
-            src="/user-profile.jpg" 
-            alt="User profile" 
-            fill
-            className="object-cover"
-          />
-        </div>
-        <div>
-          <div className="text-base">Welcome</div>
-          <div className="text-[#23B5B5] text-2xl font-medium">materiiva</div>
+    <header className="bg-white shadow-sm">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          <div className="flex items-center">
+            <button className="p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none">
+              <FiMenu className="h-6 w-6" />
+            </button>
+          </div>
+
+          <div className="flex items-center">
+            <div className="flex-shrink-0">
+              <Image
+                src="/user-profile.jpg"
+                alt="Profile"
+                width={32}
+                height={32}
+                className="rounded-full"
+              />
+            </div>
+          </div>
         </div>
       </div>
-      <button className="p-2">
-        <FiMenu className="h-6 w-6" />
-      </button>
-    </div>
+    </header>
   );
 };
 
-export default Header; 
+export default Header;

@@ -120,39 +120,107 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   if (showOrderForm) {
     return (
       <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-        <div className="bg-white w-full max-w-md mx-4">
-          <div className="bg-blue-600 text-white p-4">
-            <h3 className="text-xl">Complete your profile</h3>
-            <p className="text-sm opacity-80">Profile Status: 0% Complete</p>
+        <div className="bg-white w-full max-w-md mx-4 rounded-lg overflow-hidden">
+          <div className="bg-[#4348db] text-white p-6">
+            <h3 className="text-xl font-medium">Account Settings</h3>
+            <p className="text-sm opacity-80">Manage your account settings and preferences</p>
           </div>
-          <form onSubmit={(e) => {
-            e.preventDefault();
-            handleOrderSubmit(formData);
-          }} className="p-4">
-            <div className="space-y-4">
-              <div>
-                <label className="flex items-center text-sm text-gray-600">
-                  <span className="mr-2">•</span>
-                  Add your Email
-                </label>
-                <input
-                  type="email"
-                  required
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full mt-1 px-3 py-2 border rounded-md"
-                  placeholder="Enter your email"
-                />
+          
+          <div className="p-6">
+            <div className="mb-8">
+              <h4 className="text-lg font-medium mb-4">Security Settings</h4>
+              <div className="space-y-4">
+                <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                  <div className="flex items-center">
+                    <span className="text-gray-700">Change Password</span>
+                  </div>
+                  <input
+                    type="password"
+                    className="px-3 py-2 border rounded-md bg-white"
+                    placeholder="New password"
+                  />
+                </div>
+                <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                  <div className="flex items-center">
+                    <span className="text-gray-700">Two-Factor Authentication</span>
+                  </div>
+                  <input
+                    type="text"
+                    className="px-3 py-2 border rounded-md bg-white"
+                    placeholder="Enter code"
+                  />
+                </div>
+                <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                  <div className="flex items-center">
+                    <span className="text-gray-700">Update Phone Number</span>
+                  </div>
+                  <input
+                    type="tel"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    className="px-3 py-2 border rounded-md bg-white"
+                    placeholder="Phone number"
+                    required
+                  />
+                </div>
               </div>
-              <div>
-                <label className="flex items-center text-sm text-gray-600">
-                  <span className="mr-2">•</span>
-                  Add your Phone Number
-                </label>
-                <input
-                  type="tel"
-                  required
-                  value={formData.phone}
+            </div>
+
+            <div className="mb-8">
+              <h4 className="text-lg font-medium mb-4">Account Management</h4>
+              <div className="space-y-4">
+                <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                  <div className="flex items-center">
+                    <span className="text-gray-700">Update Email Address</span>
+                  </div>
+                  <input
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="px-3 py-2 border rounded-md bg-white"
+                    placeholder="Email address"
+                    required
+                  />
+                </div>
+                <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                  <div className="flex items-center">
+                    <span className="text-gray-700">Export Personal Data</span>
+                  </div>
+                  <button type="button" className="text-blue-600 hover:text-blue-700">Export</button>
+                </div>
+                <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                  <div className="flex items-center">
+                    <span className="text-red-600">Deactivate Account</span>
+                  </div>
+                  <button type="button" className="text-red-600 hover:text-red-700">Deactivate</button>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex justify-end gap-3">
+              <button
+                type="button"
+                onClick={() => setShowOrderForm(false)}
+                className="px-4 py-2 text-gray-600 hover:text-gray-700"
+              >
+                Close
+              </button>
+              <button
+                type="submit"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleOrderSubmit(formData);
+                }}
+                className="px-4 py-2 bg-[#4348db] text-white rounded-md hover:bg-[#3a3fc7]"
+              >
+                Save Changes
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }hone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   className="w-full mt-1 px-3 py-2 border rounded-md"
                   placeholder="Enter your phone number"

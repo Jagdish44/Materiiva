@@ -16,33 +16,67 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const [showQuantitySelector, setShowQuantitySelector] = useState(false);
   const [showOrderSummary, setShowOrderSummary] = useState(false);
   const [orderId, setOrderId] = useState('');
+  const [showOrderForm, setShowOrderForm] = useState(false);
+  const [batches, setBatches] = useState([{ number: 1, quantity: 1 }]);
+  const [currentBatch, setCurrentBatch] = useState({ number: 1, quantity: 1 });
+
 
   const handleBuyClick = () => {
     if (showQuantitySelector) {
-      // Generate order ID and show order summary immediately
-      const randomOrderId = 'ORD-' + Math.floor(100000 + Math.random() * 900000);
-      setOrderId(randomOrderId);
-      setShowOrderSummary(true);
+      setBatches([...batches, currentBatch]);
+      setShowOrderForm(true);
     } else {
       setShowQuantitySelector(true);
     }
   };
 
-  const handleCloseOrderSummary = () => {
-    setShowOrderSummary(false);
-    setShowQuantitySelector(false);
-    setQuantity(1);
+  const handleOrderSubmit = (formData: { name: string; phone: string; email: string }) => {
+    const randomOrderId = 'ORD-' + Math.floor(100000 + Math.random() * 900000);
+    setOrderId(randomOrderId);
+
+    // Store order details in localStorage (replace with actual backend call)
+    const orderDetails = {
+      ...formData,
+      items: [{
+        product,
+        batches
+      }]
+    };
+    localStorage.setItem(`order_${randomOrderId}`, JSON.stringify(orderDetails));
+
+    setShowOrderSummary(true);
+    setShowOrderForm(false);
   };
 
-  const increaseQuantity = () => {
-    setQuantity(prev => prev + 1);
+  const handleAddBatch = () => {
+    setBatches([...batches, currentBatch]);
+    setCurrentBatch({ number: currentBatch.number + 1, quantity: 1 });
   };
 
-  const decreaseQuantity = () => {
-    if (quantity > 1) {
-      setQuantity(prev => prev - 1);
-    }
+  // Placeholder for Order Form
+  const OrderForm = () => {
+    const handleSubmit = (e: React.FormEvent) => {
+      e.preventDefault();
+      const formData = new FormData(e.target as HTMLFormElement);
+      const name = formData.get('name') as string;
+      const phone = formData.get('phone') as string;
+      const email = formData.get('email') as string;
+      handleOrderSubmit({ name, phone, email });
+    };
+
+    return (
+      <form onSubmit={handleSubmit}>
+        <label>Name:</label>
+        <input type="text" name="name" required />
+        <label>Phone:</label>
+        <input type="tel" name="phone" required />
+        <label>Email:</label>
+        <input type="email" name="email" required />
+        <button type="submit">Submit</button>
+      </form>
+    );
   };
+
 
   // Order summary overlay
   if (showOrderSummary) {
@@ -54,7 +88,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               <FiCheck className="text-green-600 w-10 h-10" />
             </div>
           </div>
-          
+
           <div className="text-center mb-6">
             <h3 className="text-xl font-medium mb-2">Order Confirmed!</h3>
             <p className="text-gray-600">Your order has been placed successfully.</p>
@@ -82,6 +116,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     );
   }
 
+  if (showOrderForm) {
+    return <OrderForm />;
+  }
+
   return (
     <div className="flex bg-white rounded-lg overflow-hidden mb-4 shadow-sm">
       <div className="w-1/3 p-3 flex items-center justify-center">
@@ -98,37 +136,37 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       <div className="w-2/3 p-3 flex flex-col justify-between">
         <div className="space-y-1">
           <h3 className="text-xl font-medium">{product.name}</h3>
-          
+
           {product.details?.grade && (
             <p className="text-sm text-gray-700">
               Grade: {product.details.grade}
             </p>
           )}
-          
+
           {product.details?.type && (
             <p className="text-sm text-gray-700">
               Type: {product.details.type}
             </p>
           )}
-          
+
           {product.details?.packagingType && (
             <p className="text-sm text-gray-700">
               Packaging Type: {product.details.packagingType}
             </p>
           )}
-          
+
           {product.details?.packagingSize && (
             <p className="text-sm text-gray-700">
               Packaging Size: {product.details.packagingSize}
             </p>
           )}
-          
+
           {product.details?.settingTime && (
             <p className="text-sm text-gray-700">
               Setting Time: {product.details.settingTime}
             </p>
           )}
-          
+
           <p className="text-sm font-medium">In Stock</p>
         </div>
 
@@ -176,7 +214,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               </div>
             </div>
           )}
-          
+
           <button
             onClick={handleBuyClick}
             className="self-end bg-[#C3E0DF] text-black px-4 py-2 rounded-md"
@@ -189,4 +227,20 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   );
 };
 
-export default ProductCard; 
+const handleCloseOrderSummary = () => {
+    setShowOrderSummary(false);
+    setShowQuantitySelector(false);
+    setQuantity(1);
+  };
+
+const increaseQuantity = () => {
+    setQuantity(prev => prev + 1);
+  };
+
+const decreaseQuantity = () => {
+    if (quantity > 1) {
+      setQuantity(prev => prev - 1);
+    }
+  };
+
+export default ProductCard;

@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { FiHome, FiShoppingCart, FiUser } from 'react-icons/fi';
+import { FiHome, FiShoppingCart, FiPackage } from 'react-icons/fi';
 
 const BottomNav = () => {
   const pathname = usePathname();
@@ -17,7 +17,7 @@ const BottomNav = () => {
         <FiHome className="h-6 w-6" />
         <span className="text-xs mt-1">Home</span>
       </Link>
-      
+
       <Link 
         href="/cart" 
         className="flex flex-col items-center"
@@ -25,16 +25,16 @@ const BottomNav = () => {
         <FiShoppingCart className="h-6 w-6" />
         <span className="text-xs mt-1">Cart</span>
       </Link>
-      
+
       <Link 
-        href="/profile" 
-        className="flex flex-col items-center"
+        href="/orders" 
+        className={`flex flex-col items-center ${pathname === '/orders' ? 'text-black' : 'text-gray-500'}`}
       >
-        <FiUser className="h-6 w-6" />
-        <span className="text-xs mt-1">Profile</span>
+        <FiPackage className="h-6 w-6" />
+        <span className="text-xs mt-1">Orders</span>
       </Link>
     </div>
   );
 };
 
-export default BottomNav; 
+export default BottomNav;

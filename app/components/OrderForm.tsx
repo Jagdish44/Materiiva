@@ -1,4 +1,6 @@
 
+'use client';
+
 import React from 'react';
 
 interface OrderFormProps {
@@ -21,44 +23,72 @@ const OrderForm: React.FC<OrderFormProps> = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <div>
-        <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
-        <input
-          type="text"
-          name="name"
-          id="name"
-          required
-          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2"
-        />
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div className="bg-white w-full max-w-md mx-4">
+        <div className="bg-blue-600 text-white p-4">
+          <h3 className="text-xl">Complete your profile</h3>
+          <p className="text-sm opacity-80">Profile Status: 0% Complete</p>
+        </div>
+        <form onSubmit={handleSubmit} className="p-4">
+          <div className="space-y-4">
+            <div>
+              <label className="flex items-center text-sm text-gray-600">
+                <span className="mr-2">•</span>
+                Add your Email
+              </label>
+              <input
+                type="email"
+                name="email"
+                required
+                className="w-full mt-1 px-3 py-2 border rounded-md"
+                placeholder="Enter your email"
+              />
+            </div>
+            <div>
+              <label className="flex items-center text-sm text-gray-600">
+                <span className="mr-2">•</span>
+                Add your Phone Number
+              </label>
+              <input
+                type="tel"
+                name="phone"
+                required
+                className="w-full mt-1 px-3 py-2 border rounded-md"
+                placeholder="Enter your phone number"
+              />
+            </div>
+            <div>
+              <label className="flex items-center text-sm text-gray-600">
+                <span className="mr-2">•</span>
+                Add your Name
+              </label>
+              <input
+                type="text"
+                name="name"
+                required
+                className="w-full mt-1 px-3 py-2 border rounded-md"
+                placeholder="Enter your name"
+              />
+            </div>
+          </div>
+          <div className="mt-6 flex space-x-3">
+            <button
+              type="submit"
+              className="flex-1 bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700"
+            >
+              Submit
+            </button>
+            <button
+              type="button"
+              onClick={() => window.history.back()}
+              className="flex-1 bg-gray-100 text-gray-800 py-2 rounded-md hover:bg-gray-200"
+            >
+              Close
+            </button>
+          </div>
+        </form>
       </div>
-      <div>
-        <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone Number</label>
-        <input
-          type="tel"
-          name="phone"
-          id="phone"
-          required
-          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2"
-        />
-      </div>
-      <div>
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          required
-          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2"
-        />
-      </div>
-      <button
-        type="submit"
-        className="w-full py-3 bg-[#C3E0DF] text-black text-center rounded-md"
-      >
-        Continue to Order
-      </button>
-    </form>
+    </div>
   );
 };
 

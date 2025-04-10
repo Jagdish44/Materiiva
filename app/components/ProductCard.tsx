@@ -151,8 +151,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                   value={quantity}
                   onChange={(e) => {
                     const newValue = parseInt(e.target.value) || 1;
+                    setQuantity(Math.max(1, newValue));
+                  }}
+                  onBlur={(e) => {
+                    const newValue = parseInt(e.target.value) || 1;
                     if (window.confirm(`Confirm Quantity: ${newValue}?`)) {
                       setQuantity(newValue);
+                    } else {
+                      setQuantity(1);
                     }
                   }}
                   className="w-16 text-center focus:outline-none px-3 text-sm"

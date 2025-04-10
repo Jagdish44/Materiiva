@@ -59,11 +59,17 @@ const OrdersPage = () => {
               <h3 className="font-medium mb-2">Items:</h3>
               {orderDetails.items.map((item: any, index: number) => (
                 <div key={index} className="border-t py-2">
-                  <p>{item.product.name}</p>
+                  <p className="font-medium">{item.product.name}</p>
+                  <p className="text-sm text-gray-600">Price: ₹{item.product.price}</p>
                   {item.batches.map((batch: any, batchIndex: number) => (
-                    <p key={batchIndex} className="text-sm text-gray-600">
-                      Batch {batch.number}: {batch.quantity} pieces
-                    </p>
+                    <div key={batchIndex}>
+                      <p className="text-sm text-gray-600">
+                        Batch {batch.number}: {batch.quantity} pieces
+                      </p>
+                      <p className="text-sm text-gray-600">
+                        Total: ₹{(item.product.price * batch.quantity).toFixed(2)}
+                      </p>
+                    </div>
                   ))}
                 </div>
               ))}

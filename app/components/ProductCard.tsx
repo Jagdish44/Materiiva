@@ -221,6 +221,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           )}
 
           <p className="text-sm font-medium">In Stock</p>
+          <p className="text-lg font-bold text-gray-900">₹{product.price}</p>
         </div>
 
         <div className="flex flex-col items-end mt-2">

@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+/* Adjusting the gradient background */
+body {
+  background: linear-gradient(135deg, #f8f8f8, #e8f5f5); /* Updated gradient to match the design */
+  color: #171717; /* Updated text color to match the design */
+  font-family: Arial, sans-serif; /* Ensure a clean font for readability */
+  margin: 0;
+  padding: 0;
+}
+
+/* Ensure text remains readable on mobile */
+p, h1, h2, h3, h4, h5, h6 {
+  color: #171717; /* Consistent text color */
+}
+
+/* Optional: Add media queries for mobile-specific adjustments */
+@media (max-width: 768px) {
+  body {
+      font-size: 16px; /* Adjust font size for smaller screens */
+  }
+}

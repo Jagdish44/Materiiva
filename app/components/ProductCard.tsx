@@ -143,7 +143,20 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 >
                   <FiMinus className="w-4 h-4" />
                 </button>
-                <span className="px-3 text-sm">{quantity}</span>
+                <input
+                  type="number"
+                  inputMode="numeric"
+                  pattern="[0-9]*"
+                  min="1"
+                  value={quantity}
+                  onChange={(e) => {
+                    const newValue = parseInt(e.target.value) || 1;
+                    if (window.confirm(`Confirm Quantity: ${newValue}?`)) {
+                      setQuantity(newValue);
+                    }
+                  }}
+                  className="w-16 text-center focus:outline-none px-3 text-sm"
+                />
                 <button
                   className="px-2 py-1 text-gray-600 hover:bg-gray-100"
                   onClick={increaseQuantity}

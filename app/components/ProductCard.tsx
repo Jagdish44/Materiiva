@@ -134,22 +134,27 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
         <div className="flex flex-col items-end mt-2">
           {showQuantitySelector && (
-            <div className="flex items-center border rounded mb-2">
-              <button
-                className="px-2 py-1 text-gray-600 hover:bg-gray-100"
-                onClick={decreaseQuantity}
-                aria-label="Decrease quantity"
-              >
-                <FiMinus className="w-4 h-4" />
-              </button>
-              <span className="px-3 text-sm">{quantity}</span>
-              <button
-                className="px-2 py-1 text-gray-600 hover:bg-gray-100"
-                onClick={increaseQuantity}
-                aria-label="Increase quantity"
-              >
-                <FiPlus className="w-4 h-4" />
-              </button>
+            <div className="space-y-2">
+              <div className="flex items-center border rounded">
+                <button
+                  className="px-2 py-1 text-gray-600 hover:bg-gray-100"
+                  onClick={decreaseQuantity}
+                  aria-label="Decrease quantity"
+                >
+                  <FiMinus className="w-4 h-4" />
+                </button>
+                <span className="px-3 text-sm">{quantity}</span>
+                <button
+                  className="px-2 py-1 text-gray-600 hover:bg-gray-100"
+                  onClick={increaseQuantity}
+                  aria-label="Increase quantity"
+                >
+                  <FiPlus className="w-4 h-4" />
+                </button>
+              </div>
+              <div className="text-sm text-gray-600">
+                Total: ${((product.price ?? 0) * quantity).toFixed(2)}
+              </div>
             </div>
           )}
           

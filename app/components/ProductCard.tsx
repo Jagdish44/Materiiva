@@ -19,6 +19,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const [showOrderForm, setShowOrderForm] = useState(false);
   const [batches, setBatches] = useState([{ number: 1, quantity: 1 }]);
   const [currentBatch, setCurrentBatch] = useState({ number: 1, quantity: 1 });
+  const [formData, setFormData] = useState({ name: '', phone: '', email: '' });
 
 
   const handleBuyClick = () => {
@@ -117,7 +118,80 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   }
 
   if (showOrderForm) {
-    return <OrderForm />;
+    return (
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div className="bg-white w-full max-w-md mx-4">
+          <div className="bg-blue-600 text-white p-4">
+            <h3 className="text-xl">Complete your profile</h3>
+            <p className="text-sm opacity-80">Profile Status: 0% Complete</p>
+          </div>
+          <form onSubmit={(e) => {
+            e.preventDefault();
+            handleOrderSubmit(formData);
+          }} className="p-4">
+            <div className="space-y-4">
+              <div>
+                <label className="flex items-center text-sm text-gray-600">
+                  <span className="mr-2">•</span>
+                  Add your Email
+                </label>
+                <input
+                  type="email"
+                  required
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="w-full mt-1 px-3 py-2 border rounded-md"
+                  placeholder="Enter your email"
+                />
+              </div>
+              <div>
+                <label className="flex items-center text-sm text-gray-600">
+                  <span className="mr-2">•</span>
+                  Add your Phone Number
+                </label>
+                <input
+                  type="tel"
+                  required
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  className="w-full mt-1 px-3 py-2 border rounded-md"
+                  placeholder="Enter your phone number"
+                />
+              </div>
+              <div>
+                <label className="flex items-center text-sm text-gray-600">
+                  <span className="mr-2">•</span>
+                  Add your Name
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="w-full mt-1 px-3 py-2 border rounded-md"
+                  placeholder="Enter your name"
+                />
+              </div>
+            </div>
+            <div className="mt-6 flex space-x-3">
+              <button
+                type="submit"
+                className="flex-1 bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700"
+              >
+                Submit
+              </button>
+              <button
+                type="button"
+                onClick={() => setShowOrderForm(false)}
+                className="flex-1 bg-gray-100 text-gray-800 py-2 rounded-md hover:bg-gray-200"
+              >
+                Close
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -228,19 +302,19 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 };
 
 const handleCloseOrderSummary = () => {
-    setShowOrderSummary(false);
-    setShowQuantitySelector(false);
-    setQuantity(1);
-  };
+  setShowOrderSummary(false);
+  setShowQuantitySelector(false);
+  setQuantity(1);
+};
 
 const increaseQuantity = () => {
-    setQuantity(prev => prev + 1);
-  };
+  setQuantity(prev => prev + 1);
+};
 
 const decreaseQuantity = () => {
-    if (quantity > 1) {
-      setQuantity(prev => prev - 1);
-    }
-  };
+  if (quantity > 1) {
+    setQuantity(prev => prev - 1);
+  }
+};
 
 export default ProductCard;

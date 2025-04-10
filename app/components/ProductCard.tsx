@@ -159,7 +159,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             <div className="mt-6 flex space-x-3">
               <button
                 type="submit"
-                className="flex-1 bg-[#6B21FF] text-white py-2 rounded-md hover:bg-[#5518CC]"
+                className="flex-1 bg-[#c3e0df] text-black py-2 rounded-md hover:bg-[#b2cfce]"
               >
                 Submit
               </button>

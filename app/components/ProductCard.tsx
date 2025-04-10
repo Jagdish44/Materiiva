@@ -22,12 +22,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const [formData, setFormData] = useState({ name: '', phone: '', email: '' });
 
   const handleBuyClick = () => {
-    if (showQuantitySelector) {
-      setBatches([...batches, currentBatch]);
-      setShowOrderForm(true);
-    } else {
-      setShowQuantitySelector(true);
-    }
+    setBatches([...batches, { number: 1, quantity }]);
+    setShowOrderForm(true);
   };
 
   const handleOrderSubmit = (formData: { name: string; phone: string; email: string }) => {

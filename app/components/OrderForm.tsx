@@ -25,7 +25,7 @@ const OrderForm: React.FC<OrderFormProps> = ({ onSubmit }) => {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-white w-full max-w-md mx-4">
-        <div className="bg-blue-600 text-white p-4">
+        <div className="bg-[#c3e0df] text-black p-4">
           <h3 className="text-xl">Complete your profile</h3>
           <p className="text-sm opacity-80">Profile Status: 0% Complete</p>
         </div>
@@ -74,7 +74,7 @@ const OrderForm: React.FC<OrderFormProps> = ({ onSubmit }) => {
           <div className="mt-6 flex space-x-3">
             <button
               type="submit"
-              className="flex-1 bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700"
+              className="flex-1 bg-[#c3e0df] text-black py-2 rounded-md hover:bg-[#b2cfce]"
             >
               Submit
             </button>

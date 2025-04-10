@@ -104,7 +104,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     return (
       <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
         <div className="bg-white w-full max-w-md mx-4">
-          <div className="bg-[#6B21FF] text-white p-4">
+          <div className="bg-[#c3e0df] text-black p-4">
             <h3 className="text-xl">Complete your profile</h3>
             <p className="text-sm opacity-80">Profile Status: 0% Complete</p>
           </div>

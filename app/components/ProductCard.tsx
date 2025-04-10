@@ -268,12 +268,38 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             </div>
           )}
 
-          <button
-            onClick={handleBuyClick}
-            className="self-end bg-[#C3E0DF] text-black px-4 py-2 rounded-md"
-          >
-            BUY NOW
-          </button>
+          <div className="flex flex-col space-y-2">
+            <div className="flex items-center space-x-2">
+              <button
+                onClick={decreaseQuantity}
+                className="px-2 py-1 border rounded-md"
+              >
+                <FiMinus className="w-4 h-4" />
+              </button>
+              <input
+                type="number"
+                min="1"
+                value={quantity}
+                onChange={(e) => {
+                  const value = parseInt(e.target.value) || 1;
+                  setQuantity(Math.max(1, value));
+                }}
+                className="w-16 text-center border rounded-md py-1"
+              />
+              <button
+                onClick={increaseQuantity}
+                className="px-2 py-1 border rounded-md"
+              >
+                <FiPlus className="w-4 h-4" />
+              </button>
+            </div>
+            <button
+              onClick={handleBuyClick}
+              className="self-end bg-[#C3E0DF] text-black px-4 py-2 rounded-md w-full"
+            >
+              BUY NOW
+            </button>
+          </div>
         </div>
       </div>
     </div>

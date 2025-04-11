@@ -20,14 +20,8 @@ const Header: React.FC<HeaderProps> = ({ username }) => {
 
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              <Image
-                src="/user-profile.jpg"
-                alt="Profile"
-                width={32}
-                height={32}
-                className="rounded-full"
-              />
-            </div>
+              <span className="text-lg font-semibold">Home</span>
+          </div>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import Header from './components/layout/Header';
 import BottomNav from './components/layout/BottomNav';
 import CategoryTabs from './components/CategoryTabs';
@@ -10,7 +11,15 @@ import { products } from './data/products';
 import { useCart } from './context/CartContext';
 
 export default function Home() {
+  const router = useRouter();
   const [activeCategory, setActiveCategory] = useState('cement');
+
+  useEffect(() => {
+    const user = localStorage.getItem('user');
+    if (!user) {
+      router.push('/login');
+    }
+  }, [router]);
   
   // Filter products by active category
   const filteredProducts = products.filter(product => product.category === activeCategory);

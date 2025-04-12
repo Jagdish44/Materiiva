@@ -1,6 +1,9 @@
 
 <svg width="140" height="40" viewBox="0 0 140 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M24 8L8 24" stroke="black" stroke-width="2" stroke-linecap="round"/>
-  <path d="M8 8L24 24" stroke="black" stroke-width="2" stroke-linecap="round"/>
-  <text x="40" y="24" font-family="Arial" font-size="18" fill="black">materiiva</text>
+  <g transform="translate(0, 8)">
+    <path d="M22 2L2 22" stroke="black" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M2 2L22 22" stroke="black" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+  <text x="32" y="22" font-family="Arial" font-size="14" fill="black" font-weight="500">Welcome</text>
+  <text x="32" y="35" font-family="Arial" font-size="16" fill="#00FFEA">materiiva</text>
 </svg>

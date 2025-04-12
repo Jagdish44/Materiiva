@@ -11,16 +11,11 @@ export default function LoginPage() {
     phone: ''
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    try {
-      // Store login info in localStorage and set cookie
-      localStorage.setItem('user', JSON.stringify(formData));
-      document.cookie = `user=${JSON.stringify(formData)}; path=/`;
-      await router.push('/');
-    } catch (error) {
-      console.error('Navigation error:', error);
-    }
+    // Store login info in localStorage
+    localStorage.setItem('user', JSON.stringify(formData));
+    router.push('/');
   };
 
   return (

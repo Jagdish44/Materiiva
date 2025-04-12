@@ -14,14 +14,11 @@ export default function Home() {
   const router = useRouter();
 
   useEffect(() => {
-    try {
-      const user = localStorage.getItem('user');
-      if (!user) {
-        router.push('/login');
-        return;
-      }
-    } catch (error) {
-      console.error('Error checking login state:', error);
+    // Check if user is logged in
+    const user = localStorage.getItem('user');
+    if (!user) {
+      router.push('/login');
+      return;
     }
   }, [router]);
 

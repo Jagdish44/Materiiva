@@ -26,8 +26,14 @@ const Navbar = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link href="/" className="font-bold text-2xl">
-            Materiiva
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/logo.svg"
+              alt="Materiiva Logo"
+              width={140}
+              height={40}
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}

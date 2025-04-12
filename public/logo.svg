@@ -1,0 +1,6 @@
+
+<svg width="140" height="40" viewBox="0 0 140 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <text x="30" y="25" font-family="Arial" font-size="16" fill="black">Welcome</text>
+  <text x="30" y="35" font-family="Arial" font-size="14" fill="#00ffea">materiiva</text>
+  <path d="M15 10 L25 30 L5 30 Z" fill="black"/>
+</svg>

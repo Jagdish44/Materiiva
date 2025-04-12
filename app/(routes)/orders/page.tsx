@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState } from 'react';
@@ -30,10 +31,10 @@ const OrdersPage = () => {
   return (
     <div className="min-h-screen pb-20">
       <Header />
-
+      
       <div className="p-4">
         <h1 className="text-2xl font-bold mb-6">Track Order</h1>
-
+        
         <form onSubmit={handleSearch} className="mb-8">
           <div className="flex gap-2">
             <input
@@ -54,7 +55,6 @@ const OrdersPage = () => {
             <h2 className="font-medium mb-4">Order Details</h2>
             <p>Name: {maskName(orderDetails.name)}</p>
             <p>Phone: {maskPhone(orderDetails.phone)}</p>
-            <p className="font-medium mt-2">Total Price: ₹{orderDetails.totalPrice.toFixed(2)}</p>
             <div className="mt-4">
               <h3 className="font-medium mb-2">Items:</h3>
               {orderDetails.items.map((item: any, index: number) => (

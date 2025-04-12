@@ -13,9 +13,10 @@ export default function LoginPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Store login info in localStorage
+    // Store login info in localStorage and set cookie
     localStorage.setItem('user', JSON.stringify(formData));
-    router.push('/orders');
+    document.cookie = `user=${JSON.stringify(formData)}; path=/`;
+    router.push('/');
   };
 
   return (

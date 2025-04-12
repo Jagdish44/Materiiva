@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
 export function middleware(request: NextRequest) {
-  const user = request.cookies.get('user')
+  const user = request.cookies.get('user') || { value: request.headers.get('authorization') }
   const isLoginPage = request.nextUrl.pathname === '/login'
   const isPublicPath = request.nextUrl.pathname === '/login' || 
                       request.nextUrl.pathname.startsWith('/_next') ||

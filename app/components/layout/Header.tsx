@@ -1,6 +1,6 @@
 
 import React from 'react';
-import Image from 'next/image';
+import Link from 'next/link';
 import { FiMenu } from 'react-icons/fi';
 
 interface HeaderProps {
@@ -8,6 +8,12 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ username }) => {
+  const navLinks = [
+    { name: 'Shop', path: '/products' },
+    { name: 'About', path: '/about' },
+    { name: 'Contact', path: '/contact' },
+  ];
+
   return (
     <header className="bg-white shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -18,11 +24,17 @@ const Header: React.FC<HeaderProps> = ({ username }) => {
             </button>
           </div>
 
-          <div className="flex items-center">
-            <div className="flex-shrink-0">
-              <span className="text-lg font-semibold">Home</span>
-          </div>
-          </div>
+          <nav className="hidden md:flex items-center space-x-8">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.path}
+                className="text-sm font-medium text-gray-600 hover:text-black"
+              >
+                {link.name}
+              </Link>
+            ))}
+          </nav>
         </div>
       </div>
     </header>

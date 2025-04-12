@@ -61,7 +61,7 @@ const Navbar = () => {
                 </span>
               )}
             </button>
-
+            
             {/* Mobile Menu Button */}
             <button 
               className="p-2 ml-4 md:hidden"

@@ -15,7 +15,7 @@ export default function LoginPage() {
     e.preventDefault();
     // Store login info in localStorage
     localStorage.setItem('user', JSON.stringify(formData));
-    router.push('/');
+    router.push('/orders');
   };
 
   return (

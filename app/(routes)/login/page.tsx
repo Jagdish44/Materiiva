@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 export default function LoginPage() {
@@ -11,13 +11,24 @@ export default function LoginPage() {
     phone: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
     // Store login info in localStorage and cookie
     localStorage.setItem('user', JSON.stringify(formData));
     document.cookie = `user=${JSON.stringify(formData)}; path=/`;
-    router.push('/');
+    
+    // Force a hard navigation to ensure middleware picks up the new cookie
+    window.location.href = '/';
   };
+
+  // Check if user is already logged in
+  useEffect(() => {
+    const user = localStorage.getItem('user');
+    if (user) {
+      router.push('/');
+    }
+  }, [router]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-50">

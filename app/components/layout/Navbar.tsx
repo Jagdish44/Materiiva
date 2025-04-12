@@ -30,8 +30,8 @@ const Navbar = () => {
             <Image
               src="/logo.svg"
               alt="Materiiva Logo"
-              width={240}
-              height={80}
+              width={200}
+              height={60}
               priority
               className="dark:invert"
             />

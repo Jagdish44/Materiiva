@@ -19,7 +19,7 @@ export default function LoginPage() {
     document.cookie = `user=${JSON.stringify(formData)}; path=/`;
     
     // Force a hard navigation to ensure middleware picks up the new cookie
-    window.location.href = '/';
+    window.location.href = '/products';
   };
 
   // Check if user is already logged in

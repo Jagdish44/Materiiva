@@ -11,7 +11,7 @@ export function middleware(request: NextRequest) {
   }
 
   if (user && isLoginPage) {
-    return NextResponse.redirect(new URL('/', request.url))
+    return NextResponse.redirect(new URL('/products', request.url))
   }
 
   return NextResponse.next()

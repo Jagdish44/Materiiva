@@ -53,6 +53,7 @@ export default function LoginPage() {
           <button
             type="submit"
             className="w-full bg-[#C3E0DF] text-black py-2 rounded-md hover:bg-opacity-90"
+            onClick={handleSubmit}
           >
             Login
           </button>

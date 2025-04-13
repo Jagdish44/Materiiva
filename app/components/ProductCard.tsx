@@ -30,7 +30,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     const randomOrderId = 'ORD-' + Math.floor(100000 + Math.random() * 900000);
     setOrderId(randomOrderId);
 
-    const totalPrice = product.price * quantity;
+    const totalPrice = (product.price ?? 0) * quantity;
     const orderDetails = {
       ...formData,
       items: [{
@@ -75,7 +75,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             <h3 className="text-xl font-medium mb-2">Order Confirmed!</h3>
             <p className="text-gray-600">Your order has been placed successfully.</p>
             <p className="font-medium mt-4">Order ID: {orderId}</p>
-            <p className="font-medium">Total Price: ₹{product.price * quantity}</p>
+            <p className="font-medium">Total Price: ₹{(product.price ?? 0)* quantity}</p>
           </div>
 
           <div className="border-t border-gray-200 pt-4 mb-4">
